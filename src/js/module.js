@@ -47,7 +47,9 @@ angular.module('kcCache', ['jmdobry.angular-cache'])
           var deferred = $q.defer();
           try {
             var value = cache[method].apply(cache, arguments);
-            if (typeof(value) == 'undefined') {
+            // @todo: check the return value of other methods and add them here
+            // like 'remove' if needed.
+            if (typeof(value) == 'undefined' && method != 'remove') {
               deferred.reject(null);
             }
             deferred.resolve(value);
@@ -118,7 +120,9 @@ angular.module('kcCache', ['jmdobry.angular-cache'])
           var deferred = $q.defer();
           try {
             var value = cache[method].apply(cache, arguments);
-            if (typeof(value) == 'undefined') {
+            // @todo: check the return value of other methods and add them here
+            // like 'remove' if needed.
+            if (typeof(value) == 'undefined' && method != 'remove') {
               deferred.reject(null);
             }
             deferred.resolve(value);
